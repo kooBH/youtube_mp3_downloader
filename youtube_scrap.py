@@ -34,9 +34,12 @@ ydl_opts = {
     'logger': MyLogger(),
     'progress_hooks': [my_hook],
 }
-with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-  ydl.download(['https://youtu.be/WfwnietuaME'])
-  #ydl.download(['https://youtu.be/MAdQyx88k7E'])
+
+with open('lists.txt') as f:
+    lines = f.readlines()
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([lines])
+
 '''
 
 1. ffprobe 를 받아야함
