@@ -38,7 +38,7 @@ ydl_opts = {
 with open('lists.txt') as f:
     lines = f.readlines()
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([lines])
+        ydl.download(lines)
 
 '''
 
