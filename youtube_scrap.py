@@ -17,8 +17,10 @@ def my_hook(d):
     if d['status'] == 'finished':
         print('Done downloading, now converting ...')
     elif d['status'] == 'downloading' :
-        print("Downloading : " + str(round( (d['downloaded_bytes'] / d['total_bytes'] )* 100 , 2) ) + "%")
-
+        if 'total_bytes' in d :
+            print("Downloading : " + str(round( (d['downloaded_bytes'] / d['total_bytes'] )* 100 , 2) ) + "%")
+        else :
+             print("Downloading : But couldn't get total_bytes" )
 
 ydl_opts = {
     'format': 'bestaudio/best',
