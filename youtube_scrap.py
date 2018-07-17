@@ -17,11 +17,7 @@ def my_hook(d):
     if d['status'] == 'finished':
         print('Done downloading, now converting ...')
     elif d['status'] == 'downloading' :
-        if 'total_bytes' in d:
-            print("Downloading : " + str(round( (d['downloaded_bytes'] / d['total_bytes'] )* 100 , 2) ) + "%")
-        else:
-             #이 URL의 경우 total_bytes를 못 받음 https://youtu.be/yjsfB4zJ4Is
-             print("Downloading : But couldn't get total_bytes")
+        print("Downloading : " + str(round( (d['downloaded_bytes'] / d['total_bytes'] )* 100 , 2) ) + "%")
 
 
 ydl_opts = {
@@ -42,7 +38,8 @@ ydl_opts = {
 with open('lists.txt') as f:
     lines = f.readlines()
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-         ydl.download(lines)
+        ydl.download(lines)
+
 '''
 
 1. ffprobe 를 받아야함
