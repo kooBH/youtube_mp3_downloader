@@ -2,7 +2,11 @@
 Download audio of a youtube video as mp3 file using youtube-dl library
 
 # Dependency 
-+ [Youtube-DL](https://rg3.github.io/youtube-dl/)
++ [Youtube-DL](https://rg3.github.io/youtube-dl/)  
+**Windows PowerShell**
+```
+pip install --upgrade youtube_dl
+```
 + [ffmpeg](https://www.ffmpeg.org/)
 
 ## Usage
