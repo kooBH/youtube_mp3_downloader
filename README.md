@@ -7,7 +7,7 @@ Download audio of a youtube video as mp3 file using youtube-dl library
 ```
 pip install --upgrade youtube_dl
 ```
-+ [ffmpeg](https://www.ffmpeg.org/)
++ [ffmpeg](https://www.ffmpeg.org/) -- 없어도 mp3 받는데는 문제가 없다 -- 
 1. **Windows PowerShell**
 ```
 pip install ffmpeg
