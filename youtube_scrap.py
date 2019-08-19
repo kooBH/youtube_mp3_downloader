@@ -18,15 +18,15 @@ def my_hook(d):
         print('Done downloading, now converting ...')
     elif d['status'] == 'downloading' :
         if 'total_bytes' in d :
-            print("Downloading : " + str(round( (d['downloaded_bytes'] / d['total_bytes'] )* 100 , 2) ) + "%")
+            pass#print("Downloading : " + str(round( (d['downloaded_bytes'] / d['total_bytes'] )* 100 , 2) ) + "%")
         else :
-             print("Downloading : But couldn't get total_bytes" )
+            pass#print("Downloading : But couldn't get total_bytes" )
 
 ydl_opts = {
     'format': 'bestaudio/best',
      #파일이름 default %(title)s-%(id)s.%(ext)s
      #'outtmpl':'%(title)s.',
-    'outtmpl':'%(title)s.%(ext)s',
+    'outtmpl':'downloads/%(title)s.%(ext)s',
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
@@ -37,8 +37,14 @@ ydl_opts = {
     'progress_hooks': [my_hook],
 }
 
+
 with open('lists.txt') as f:
     lines = f.readlines()
+    '''
+    18.11.29
+    유투브에서 공유 주소를 youtu.be를 주고있음 
+    Youtube-dl 을 update 
+    '''
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.download(lines)
 
