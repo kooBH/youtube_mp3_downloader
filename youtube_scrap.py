@@ -1,6 +1,16 @@
 from __future__ import unicode_literals
-import youtube_dl
 
+import os,sys
+fwd = os.path.dirname(os.path.realpath(sys.argv[0]))
+bin_path = os.path.join(fwd, "bin")
+
+print(" * fwd : " + str(fwd))
+print(" * bin path : " + str(bin_path))
+
+os.environ["PATH"] += ";" + str(bin_path)
+print(" * PATH : " + os.environ["PATH"])
+
+import youtube_dl
 
 class MyLogger(object):
     def debug(self, msg):
@@ -23,7 +33,8 @@ def my_hook(d):
             pass#print("Downloading : But couldn't get total_bytes" )
 
 ydl_opts = {
-    'format': 'bestaudio/best',
+    'prefer_ffmpeg':True,
+	'format': 'bestaudio/best',
      #파일이름 default %(title)s-%(id)s.%(ext)s
      #'outtmpl':'%(title)s.',
     'outtmpl':'downloads/%(title)s.%(ext)s',
@@ -35,7 +46,9 @@ ydl_opts = {
     }],
     'logger': MyLogger(),
     'progress_hooks': [my_hook],
+	
 }
+
 
 
 with open('lists.txt') as f:
