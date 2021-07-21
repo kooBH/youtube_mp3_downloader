@@ -32,6 +32,10 @@ def my_hook(d):
         else :
             pass#print("Downloading : But couldn't get total_bytes" )
 
+# ydl_opts list
+# https://github.com/ytdl-org/youtube-dl/blob/master/youtube_dl/YoutubeDL.py#L128-L278
+
+
 ydl_opts = {
     'prefer_ffmpeg':True,
 	'format': 'bestaudio/best',
